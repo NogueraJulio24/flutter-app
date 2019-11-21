@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Review extends StatelessWidget{
 
   String pat;
-  String name = "juulio";
+  String name = "Julio";
 
   Review(this.pat, name);
 
