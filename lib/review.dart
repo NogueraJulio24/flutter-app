@@ -4,6 +4,8 @@ class Review extends StatelessWidget{
 
   String pat;
   String name = "Julio";
+  String details = "1 review 5 photos";
+  String comment = "Este es un gran comentario";
 
   Review(this.pat, name);
 
@@ -16,7 +18,11 @@ class Review extends StatelessWidget{
       ),
 
       child: Text(
-        name
+        name,
+        textAlign: TextAlign.left,
+        style: TextStyle(
+          fontSize: 17.0
+        ),
       ),
     );
 
