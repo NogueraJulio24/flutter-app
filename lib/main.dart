@@ -208,7 +208,7 @@ class HomeScreenBottomPart extends StatelessWidget {
                   width: double.infinity,
                   height: 130.0,
                   fit: BoxFit.cover,
-                ),
+                ),  
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 0.0, left: 8.0, right: 8.0),
