@@ -2,6 +2,8 @@
 
 A new Flutter application.
 
+![app](/assets/Screenshot.png?raw=true "Frist app")
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
