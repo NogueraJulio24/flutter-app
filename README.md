@@ -2,7 +2,7 @@
 
 That's my first app building with Flutter and Dart.
 
-<img src="/assets/Screenshot.png" width="300" height="100"/>
+<img src="/assets/Screenshot.png" width="300" height="800"/>
 
 ## Getting Started
 
