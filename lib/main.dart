@@ -152,7 +152,7 @@ class HomeScreeTopPart extends StatelessWidget {
                           ),
                           RotatedBox(
                             quarterTurns: 2,
-                            child: Icon(CustomIcons.back_icon,
+                            child: Icon(Icons.chevron_left,
                                 size: 25.0, color: Colors.white),
                           )
                         ],
@@ -173,15 +173,16 @@ class HomeScreenBottomPart extends StatelessWidget {
   List<String> images = [
     "assets/img/simpsons.png",
     "assets/img/infinity.jpg",
-    "assets/img/backpanther.jpg"
+    "assets/img/backpanther.jpg",
+    "assets/img/pantera.jpg"
   ];
 
-  List<String> titles = ["Los Simpsons", "Avengers: Infinity War", "Black Panther"];
+  List<String> titles = ["Los Simpsons", "Avengers: Infinity War", "Black Panther", "La Pantera Rosa"];
 
   List<Widget> movies() {
     List<Widget> movieList = new List();
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) {
       var movieitem = Padding(
         padding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 12.0),
         child: Container(
@@ -210,7 +211,7 @@ class HomeScreenBottomPart extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 4.0, left: 8.0, right: 8.0),
+                padding: const EdgeInsets.only(top: 0.0, left: 8.0, right: 8.0),
                 child: Text(titles[i],
                     textAlign: TextAlign.center,
                     style: TextStyle(
