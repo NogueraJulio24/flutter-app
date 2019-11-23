@@ -1,8 +1,8 @@
 # hello_world
 
-A new Flutter application.
+That's my first app building with Flutter and Dart.
 
-![app](/assets/Screenshot.png?raw=true "Frist app")
+<img src="/assets/Screenshot.png" width="300" height="100"/>
 
 ## Getting Started
 
