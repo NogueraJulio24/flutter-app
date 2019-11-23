@@ -1,111 +1,291 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/review.dart';
-import 'description_place.dart';
-import 'review_list.dart';
+import 'customicon.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Mundo Julio")
-        ),
-        //body: new DescriptionPlace("Bahamas", 4, "Este es la gran description que esperan"),
-        body: ReviewList(),
-      )
-    );
-  }
+void main() {
+  runApp(MaterialApp(
+    home: Home(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
+class Home extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomeState createState() => new _HomeState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      body: SingleChildScrollView(
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
+          children: <Widget>[HomeScreeTopPart(), HomeScreenBottomPart()],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home, color: Color(0xFFE52020)),
+              title: Text("Home", style: TextStyle(color: Color(0xFFE52020)))),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.search,
+              ),
+              title: Text("Search", style: TextStyle())),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.bookmark_border,
+              ),
+              title: Text(
+                "Bookmark",
+              )),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person_outline), title: Text("Profile"))
+        ],
+      ),
     );
+  }
+}
+
+class HomeScreeTopPart extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      height: 420.0,
+      child: Stack(
+        children: <Widget>[
+          ClipPath(
+            clipper: Mclipper(),
+            child: Container(
+              height: 370.0,
+              decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                BoxShadow(
+                    color: Colors.black12,
+                    offset: Offset(0.0, 10.0),
+                    blurRadius: 10.0)
+              ]),
+              child: Stack(
+                children: <Widget>[
+                  Image.asset("assets/img/vengadores.jpg",
+                      fit: BoxFit.cover, width: double.infinity),
+                  Container(
+                    height: double.infinity,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [
+                              const Color(0x00000000),
+                              const Color(0xD9333333)
+                            ],
+                            stops: [
+                              0.0,
+                              0.9
+                            ],
+                            begin: FractionalOffset(0.0, 0.0),
+                            end: FractionalOffset(0.0, 1.0))),
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 120.0, left: 95.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            "Los vengadores",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15.0,
+                                fontFamily: "SF-Pro-Display-Bold"),
+                          ),
+                          Text(
+                            "El inicio: Episodio 2",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 45.0,
+                                fontFamily: "SF-Pro-Display-Bold"),
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: 370.0,
+            right: -20.0,
+            child: FractionalTranslation(
+              translation: Offset(0.0, -0.5),
+              child: Row(
+                children: <Widget>[
+                  FloatingActionButton(
+                    backgroundColor: Colors.white,
+                    onPressed: () {},
+                    child: Icon(
+                      Icons.add,
+                      color: Color(0xFFE52020),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 12.0,
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(30.0),
+                    child: RaisedButton(
+                      onPressed: () {},
+                      color: Color(0xFFE52020),
+                      padding: EdgeInsets.symmetric(
+                          vertical: 15.0, horizontal: 80.0),
+                      child: Row(
+                        children: <Widget>[
+                          Text(
+                            "Ver ahora",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15.0,
+                                fontFamily: "SF-Pro-Display-Bold"),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          RotatedBox(
+                            quarterTurns: 2,
+                            child: Icon(CustomIcons.back_icon,
+                                size: 25.0, color: Colors.white),
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class HomeScreenBottomPart extends StatelessWidget {
+  List<String> images = [
+    "assets/img/simpsons.png",
+    "assets/img/infinity.jpg",
+    "assets/img/backpanther.jpg"
+  ];
+
+  List<String> titles = ["Los Simpsons", "Avengers: Infinity War", "Black Panther"];
+
+  List<Widget> movies() {
+    List<Widget> movieList = new List();
+
+    for (int i = 0; i < 3; i++) {
+      var movieitem = Padding(
+        padding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 12.0),
+        child: Container(
+          height: 220.0,
+          width: 135.0,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20.0),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 10.0,
+                    offset: Offset(0.0, 10.0))
+              ]),
+          child: Column(
+            children: <Widget>[
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0)),
+                child: Image.asset(
+                  images[i],
+                  width: double.infinity,
+                  height: 130.0,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 4.0, left: 8.0, right: 8.0),
+                child: Text(titles[i],
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 16.0, fontFamily: "SF-Pro-Display-Bold")),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 3.0),
+                child: Text(i == 0 ? "Episodio 1" : ""),
+              )
+            ],
+          ),
+        ),
+      );
+      movieList.add(movieitem);
+    }
+    return movieList;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      height: 360.0,
+      margin: EdgeInsets.only(left: 65.0),
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "Ver ahora",
+                  style: TextStyle(
+                      fontSize: 22.0, fontFamily: "SF-Pro-Display-Bold"),
+                ),
+                FlatButton(
+                  child: Text("Ver más"),
+                  onPressed: () {},
+                )
+              ],
+            ),
+          ),
+          Container(
+            height: 250.0,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: movies(),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class Mclipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = new Path();
+    path.lineTo(0.0, size.height - 100.0);
+
+    var controlpoint = Offset(35.0, size.height);
+    var endpoint = Offset(size.width / 2, size.height);
+
+    path.quadraticBezierTo(
+        controlpoint.dx, controlpoint.dy, endpoint.dx, endpoint.dy);
+
+    path.lineTo(size.width, size.height);
+    path.lineTo(size.width, 0.0);
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return true;
   }
 }
